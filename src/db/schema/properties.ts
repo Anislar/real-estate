@@ -8,9 +8,9 @@ import {
   boolean,
   pgTable as table,
 } from 'drizzle-orm/pg-core';
-import { Amenity, Highlight, PropertyType } from '../../utils';
 import { location } from './location';
 import { manager } from './manager';
+import { Amenity, Highlight, PropertyType } from './enum-type';
 
 export const property = table('properties', {
   id: serial('id').primaryKey(),
@@ -34,7 +34,7 @@ export const property = table('properties', {
   locationId: integer('location_id')
     .notNull()
     .references(() => location.id),
-  managerId: text('manager_id')
+  managerId: integer('manager_id')
     .notNull()
     .references(() => manager.id),
 });

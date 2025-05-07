@@ -6,9 +6,9 @@ import {
   pgTable as table,
 } from 'drizzle-orm/pg-core';
 import { tenant } from './tenant';
-import { ApplicationStatus } from '../../utils';
 import { lease } from './lease';
 import { property } from './properties';
+import { ApplicationStatus } from './enum-type';
 
 // --------------------------------------------> APPLICATION <--------------------------------------------
 export const application = table('application', {

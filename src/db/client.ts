@@ -1,6 +1,5 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { Pool } from 'pg';
-import { migrate } from 'drizzle-orm/node-postgres/migrator';
 import { sql } from 'drizzle-orm';
 
 import * as schema from './schema';
@@ -20,11 +19,9 @@ const connectDb = async () => {
     await pool.query('SELECT 1');
     logger.info('✅ Database connection successful.');
 
-    await migrate(db, { migrationsFolder: './drizzle' });
-    logger.info('✅ Migrations ran successfully.');
-
     await db.execute(sql.raw(`CREATE EXTENSION IF NOT EXISTS postgis`));
 
+    // handle type in pg geo
     await db.execute(
       sql.raw(`
       DO $$

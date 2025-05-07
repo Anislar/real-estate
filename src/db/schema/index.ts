@@ -1,3 +1,4 @@
+export * from './enum-type';
 export * from './user';
 export * from './manager';
 export * from './payment';

@@ -7,10 +7,9 @@
     "build": "rimraf dist &&  npx tsc",
     "start": "npm run build && node dist/index.js",
     "dev": "npm run build &&  concurrently \"npx tsc -w\" \"nodemon  --exec ts-node src/index.ts\" ",
-    "generate": "npx drizzle-kit generate",
-    "reset-db": "ts-node src/scripts/reset-db.ts",
-    "push": "npx drizzle-kit push",
-    "migrate": "npx drizzle-kit migrate"
+    "db:generate": "npx drizzle-kit generate",
+    "db:reset": "ts-node src/scripts/reset-db.ts",
+    "db:push": "npx drizzle-kit push"
   },
   "keywords": [
     "rent",

@@ -5,8 +5,8 @@ import {
   doublePrecision,
   pgTable as table,
 } from 'drizzle-orm/pg-core';
-import { PaymentStatus } from '../../utils';
 import { lease } from './lease';
+import { PaymentStatus } from './enum-type';
 
 // --------------------------------------------> PAYMENT <--------------------------------------------
 export const payment = table('payment', {
