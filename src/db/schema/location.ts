@@ -1,6 +1,6 @@
 import { serial, varchar, text, pgTable as table } from 'drizzle-orm/pg-core';
 
-// --------------------------------------------> LOCATION <--------------------------------------------
+// --------------------------------------------> LOCATION l<--------------------------------------------
 export const location = table('location', {
   id: serial('id').primaryKey(),
   address: varchar('address', { length: 255 }).notNull(),
