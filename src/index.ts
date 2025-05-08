@@ -3,8 +3,8 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 
-import { connectDb } from './db/client';
-import { logger, env } from './utils';
+import { connectDb } from '@/db/client';
+import { logger, env } from '@/utils';
 
 // --------------------------> Initialize App <--------------------------
 const app = express();

@@ -1,0 +1,1 @@
+"D:\dev\postgres\bin\pg_ctl" -D "D:\dev\postgres\data" start

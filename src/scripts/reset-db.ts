@@ -1,10 +1,13 @@
-import { db, pool } from '../db/client';
-import { logger } from '../utils';
+import { db, pool } from '@/db/client';
+import { logger } from '@/utils';
+import { sql } from 'drizzle-orm';
 
 async function resetDatabase() {
-  logger.info('⚠️  Dropping all tables and custom types...');
+  logger.info('⚠️  Dropping all tables, extension and custom types...');
 
   try {
+    await db.execute(sql.raw(`DROP EXTENSION IF EXISTS postgis CASCADE`));
+
     // Step 1: Drop all custom types (e.g., enums, composite types, etc.)
     await db.execute(`
       DO $$ DECLARE
@@ -20,6 +23,7 @@ async function resetDatabase() {
           END LOOP;
       END $$;
     `);
+
     // Step 2: Drop all the tables and their dependencies
     await db.execute(`
       DO $$ DECLARE
@@ -32,7 +36,7 @@ async function resetDatabase() {
       END $$;
     `);
 
-    logger.info('✅  All tables and custom types dropped.');
+    logger.info('✅  All tables, Extension and custom types dropped.');
   } catch (err) {
     logger.error('❌ Error dropping tables or types:', err);
   } finally {
